@@ -4,8 +4,8 @@ export function useCalculateCurrency(data) {
 
     const [fromCurrency, setFromCurrency] = useState('UAH');
     const [toCurrency, setToCurrency] = useState('USD');
-    const [fromValue, setFromValue] = useState(null);
-    const [toValue, setToValue] = useState(null);
+    const [fromValue, setFromValue] = useState(0);
+    const [toValue, setToValue] = useState(0);
 
     const newData = Object.values(data);
 
@@ -15,7 +15,7 @@ export function useCalculateCurrency(data) {
 
         const result = (value / fromCurrencyData.value) * toCurrencyData.value;
 
-        setToValue(result.toFixed(2));
+        setToValue(result);
         setFromValue(value);
     }
 
@@ -26,27 +26,31 @@ export function useCalculateCurrency(data) {
         const result = (fromCurrencyData.value / toCurrencyData.value) * value;
 
         setToValue(value);
-        setFromValue(result.toFixed(2));
-    }
-
-    const changeToCurrency = (value, cur) => {
-        const fromCurrencyData = newData.find(currency => currency.code === cur)
-        const toCurrencyData = newData.find(currency => currency.code === toCurrency)
-
-        const result = (fromCurrencyData.value / toCurrencyData.value) * value;
-
-        setToValue(result.toFixed(2));
-        setFromValue(fromValue);
+        setFromValue(result);
     }
 
     const changeFromCurrency = (value, cur) => {
-        const fromCurrencyData = newData.find(currency => currency.code === fromCurrency)
-        const toCurrencyData = newData.find(currency => currency.code === cur)
+        if (!cur) cur = fromCurrency;
+
+        const fromCurrencyData = newData.find(currency => currency.code === cur);
+        const toCurrencyData = newData.find(currency => currency.code === toCurrency);
 
         const result = (value / fromCurrencyData.value) * toCurrencyData.value;
 
-        setToValue(toValue);
-        setFromValue(result.toFixed(2));
+        setToValue(result);
+        setFromValue(fromValue);
+    }
+
+    const changeToCurrency = (value, cur) => {
+        if (!cur) cur = toCurrency;
+
+        const fromCurrencyData = newData.find(currency => currency.code === fromCurrency);
+        const toCurrencyData = newData.find(currency => currency.code === cur);
+
+        const result = (fromValue / fromCurrencyData.value) * toCurrencyData.value;
+
+        setToValue(result);
+        setFromValue(fromValue);
     }
 
     return {
