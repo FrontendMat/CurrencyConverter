@@ -1,0 +1,11 @@
+.input {
+    padding: 10px 15px;
+    border: 1px solid var(--secondary-color);
+    color: var(--txt-color);
+    border-radius: 12px;
+    outline: none;
+}
+
+.input:focus {
+    border-color: var(--primary-color);
+}

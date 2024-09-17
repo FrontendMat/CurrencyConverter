@@ -1,0 +1,30 @@
+.container {
+    display: grid;
+    gap: 20px
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    width: fit-content;
+    gap: 40px;
+    align-items: center;
+    background-color: var(--inverted-bg-color);
+    padding: 40px;
+    border-radius: var(--border-radius);
+    justify-self: center;
+}
+
+.title_wrapper {
+    padding: 10px;
+    border-radius: var(--border-radius);
+    background-color: var(--primary-color);
+    width: fit-content;
+    color: var(--inverted-bg-color);
+    justify-self: center;
+}
+
+.title {
+    text-align: center;
+    font-size: 25px;
+}

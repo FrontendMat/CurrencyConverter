@@ -1,0 +1,9 @@
+.select {
+    border: 1px solid var(--primary-color);
+    background-color: var(--primary-color);
+    padding: 9px;
+    outline: none;
+    border-radius: var(--border-radius);
+    color: var(--bg-color);
+    font-weight: bold;
+}

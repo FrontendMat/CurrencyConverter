@@ -1,0 +1,10 @@
+.item span{
+    font-weight: bold;
+}
+
+.load {
+    width: 30px;
+    height: 15px;
+    background-color: var(--secondary-color);
+    border-radius: var(--border-radius);
+}
